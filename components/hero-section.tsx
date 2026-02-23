@@ -12,7 +12,7 @@ export function HeroSection() {
      {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/cobranzas.jpg" /* reemplace con imagen requerida  */
+            src="/LandingPageMjm/cobranzas.jpg" /* reemplace con imagen requerida  */
             alt="Fondo"
             className="w-full h-full object-cover"
           />
