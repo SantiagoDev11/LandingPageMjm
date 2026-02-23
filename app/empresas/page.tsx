@@ -72,7 +72,7 @@ export default function EmpresasPage() {
       <section className="relative overflow-hidden">
          <div className="absolute inset-0 z-0">
           <Image
-            src="/descarga.jpg" 
+            src="/LandingPageMjm/descarga.jpg" 
             alt="Fondo"
             fill
             priority
@@ -181,7 +181,7 @@ export default function EmpresasPage() {
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="order-1 lg:order-2 relative h-[500px] rounded-[60px] overflow-hidden shadow-2xl">
               <Image 
-                src="/imagen5.jpg" 
+                src="/LandingPageMjm/imagen5.jpg" 
                 alt="Infraestructura IT" 
                 fill 
                 className="object-cover"
@@ -197,7 +197,7 @@ export default function EmpresasPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div {...fadeInUp} className="relative h-[400px] rounded-[60px] overflow-hidden shadow-2xl">
               <Image 
-                src="/imagen6.jpg" 
+                src="/LandingPageMjm/imagen6.jpg" 
                 alt="Infraestructura Operativa" 
                 fill 
                 className="object-cover"
@@ -231,7 +231,7 @@ export default function EmpresasPage() {
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="relative h-[400px] rounded-[60px] overflow-hidden shadow-2xl">
               <Image 
-                src="/imagen7.jpg" 
+                src="/LandingPageMjm/imagen7.jpg" 
                 alt="Archivo Jurídico" 
                 fill 
                 className="object-cover"
@@ -245,7 +245,7 @@ export default function EmpresasPage() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/imagen4.jpg"
+            src="/LandingPageMjm/imagen4.jpg"
             alt="Fondo Talento Humano"
             fill
             className="object-cover opacity-150"
