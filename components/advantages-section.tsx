@@ -35,7 +35,7 @@ export function AdvantagesSection() {
     <section id="porque-elegirnos" className="py-24 bg-white relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/imagen4.jpg" 
+          src="/LandingPageMjm/imagen4.jpg" 
           alt="Fondo"
           fill
           className="object-cover opacity-60" 
