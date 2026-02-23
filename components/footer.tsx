@@ -4,9 +4,9 @@ import Link from "next/link"
 import { Phone, Mail, MapPin, FileText, ExternalLink } from "lucide-react"
 
 const quickLinks = [
-  { href: "/#inicio", label: "Inicio" },
-  { href: "/#conocenos", label: "Conócenos" },
-  { href: "/#porque-elegirnos", label: "¿Por qué elegirnos?" }, 
+  { href: "#inicio", label: "Inicio" },
+  { href: "#conocenos", label: "Conócenos" },
+  { href: "#porque-elegirnos", label: "¿Por qué elegirnos?" }, 
   { href: "/#servicios", label: "Servicios" },       
   { href: "/empresas", label: "Empresas" },
 ]
