@@ -62,7 +62,7 @@ export function Header() {
             {/* Logo modificado */}
               <Link href="/" className="flex items-center gap-10 group">
                 <img 
-                  src="/LandingPageMjm/public/logo7mjm.png"
+                  src="/LandingPageMjm/logo7mjm.png"
                   alt="Logo MJM" 
                   className="w-62 h-38 object-contain group-hover:scale-110 transition-transform"
                 />
