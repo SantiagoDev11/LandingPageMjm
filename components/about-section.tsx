@@ -25,6 +25,13 @@ const features = [
   }
 ]
 
+const keyPoints = [
+  "Cobranza Persuasiva",
+  "Gestión Jurídica Especializada",
+  "Alta Efectividad",
+  "Ética y Confidencialidad"
+]
+
 export function AboutSection() {
   return (
     <section id="conocenos" className="py-24 bg-white">
@@ -38,9 +45,8 @@ export function AboutSection() {
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance">
             Más de 20 Años de Experiencia en Recuperación de Cartera
           </h2>
-          {/* CORRECCIÓN: text-slate-600 en lugar de text-black-foreground */}
           <p className="text-slate-600 text-lg leading-relaxed">
-          
+            Especialistas en la gestión integral de activos, transformando la recuperación de cartera en una ventaja competitiva para su negocio.
           </p>
         </div>
 
@@ -52,13 +58,12 @@ export function AboutSection() {
             <div className="aspect-[5/3] rounded-2xl bg-gradient-to-br from-[#0d2a61] to-[#1264ad] overflow-hidden relative shadow-2xl">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center text-white p-8">
-                  {/* CORRECCIÓN: text-yellow-400 para el icono Award */}
                   <Award className="w-20 h-20 mx-auto mb-6 text-yellow-400" />
                   <h3 className="font-serif text-3xl font-bold mb-4">
                     Compromiso y Excelencia
                   </h3>
                   <p className="text-white/90 max-w-md">
-              
+                    Resultados respaldados por una trayectoria de integridad y profesionalismo en el sector legal y financiero.
                   </p>
                 </div>
               </div>
@@ -73,27 +78,22 @@ export function AboutSection() {
               <h3 className="font-serif text-2xl font-bold text-slate-900 mb-4">
                 ¿Quiénes Somos?
               </h3>
-              <div className="text-slate-600 leading-relaxed mb-6 space-y-4">
+              <div className="text-slate-600 leading-relaxed space-y-4">
                 <p>
                   <strong>Martha Janeth Mejía Castaño & Cía. Ltda. Abogados Asociados</strong> es una empresa especializada en la recuperación de cartera vencida al sector financiero, comercial público y privado, mediante el cobro prejudicial y Judicial, con los más altos estándares de calidad.
                 </p>
                 <p>
                   Nos preciamos de poseer una vasta experiencia en el sector, respaldada por más de 20 años de trayectoria, caracterizándonos principalmente por aplicar una cobranza empática, respetuosa y sólida que cumple arduamente con las necesidades de nuestros clientes y exigencias de Ley.
-                <p/>
-
-                  <br/>
-
-                  <p>
-                    Nuestros servicios de cobranza tienen cobertura principal en la ciudad de Cali y demás ciudades a nivel nacional.
-                  </p>
-
+                </p>
+                <p>
+                  Nuestros servicios de cobranza tienen cobertura principal en la ciudad de Cali y demás ciudades a nivel nacional.
                 </p>
               </div>
             </div>
 
             {/* Key Points */}
             <div className="grid grid-cols-2 gap-4">
-              {[].map((item) => (
+              {keyPoints.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-blue-600" />
                   <span className="text-slate-800 font-medium text-sm">{item}</span>

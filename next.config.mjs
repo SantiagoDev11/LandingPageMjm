@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // <-- ESTA LÍNEA ES LA MÁS IMPORTANTE
+  output: 'export',
   images: {
-    unoptimized: true, // Necesario para que las imágenes carguen en GoDaddy
+    unoptimized: true,
   },
+  // ESTO ES CLAVE para que carguen los estilos en GitHub Pages
+  basePath: '/LandingPageMjm',
+  assetPrefix: '/LandingPageMjm',
 };
 
 export default nextConfig;
