@@ -1,6 +1,13 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Regla global para corregir el desplazamiento de los enlaces (Anclas) */
+html {
+  scroll-behavior: smooth;
+  /* Ajusta este valor (100px-120px) según la altura final de tu header */
+  scroll-padding-top: 110px; 
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
