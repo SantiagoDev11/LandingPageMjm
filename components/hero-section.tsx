@@ -8,7 +8,7 @@ import Image from "next/image"
 
 export function HeroSection() {
   return (
-    <section id="inicio" className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section id="inicio" className="relative min-h-[90vh] flex items-center overflow-hidden scroll-mt-24">
      {/* Background Image */}
         <div className="absolute inset-0">
           <img
