@@ -1,12 +1,20 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-/* Regla global para corregir el desplazamiento de los enlaces (Anclas) */
-html {
-  scroll-behavior: smooth;
-  /* Ajusta este valor (100px-120px) según la altura final de tu header */
-  scroll-padding-top: 110px; 
-}
+@layer base {
+  :root {
+    /* ... tus variables ... */
+  }
+
+  /* Esto soluciona el problema de las anclas de forma universal */
+  html {
+    scroll-behavior: smooth !important;
+  }
+
+  /* Aplicamos el margen directamente a cualquier elemento que sea un objetivo de ancla */
+  [id] {
+    scroll-margin-top: 130px;
+  }
 
 @custom-variant dark (&:is(.dark *));
 
