@@ -32,7 +32,7 @@ const stats = [
 
 export function AdvantagesSection() {
   return (
-    <section id="porque-elegirnos" className="py-24 bg-white relative overflow-hidden">
+    <section id="porque-elegirnos" className="py-24 bg-white relative overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 z-0">
         <Image
           src="/LandingPageMjm/imagen4.jpg" 
