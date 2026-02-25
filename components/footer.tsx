@@ -104,7 +104,7 @@ export function Footer() {
       <div className="border-t border-white/10 bg-black/20">
         <div className="container mx-auto px-6 py-6 text-center md:text-left">
           <p className="text-white/30 text-xs">
-            © {new Date().getFullYear()} MARTHA JANETH MEJÍA CASTAÑO & CIA LTDA.ABOGADOS ASOCIADOS. Todos los derechos reservados.
+            © {new Date().getFullYear()} MARTHA JANETH MEJÍA CASTAÑO & CIA LTDA. ABOGADOS ASOCIADOS. Todos los derechos reservados.
           </p>
         </div>
       </div>
