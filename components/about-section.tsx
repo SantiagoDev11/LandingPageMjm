@@ -46,7 +46,7 @@ export function AboutSection() {
             Más de 20 Años de Experiencia en Recuperación de Cartera
           </h2>
           <p className="text-slate-600 text-lg leading-relaxed">
-            Especialistas en la gestión integral de activos, transformando la recuperación de cartera en una ventaja competitiva para su negocio.
+            Transformamos la recuperación de cartera en una ventaja competitiva para su negocio.
           </p>
         </div>
 
