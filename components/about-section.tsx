@@ -34,7 +34,7 @@ const keyPoints = [
 
 export function AboutSection() {
   return (
-    <section id="conocenos" className="py-24 bg-white">
+    <section id="conocenos" className="py-24 bg-white scroll-mt-24">
       <div className="container mx-auto px-6">
         
         {/* Section Header */}
