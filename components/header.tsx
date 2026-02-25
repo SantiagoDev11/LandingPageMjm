@@ -32,11 +32,11 @@ export function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="hidden lg:block bg-[#0d2a61] text-white py-2">
+      <div className="hidden lg:block bg-[#0d2a61] text-white py-1">
         <div className="container mx-auto px-6 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
             <a href="tel:+576028895271" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone className="h-4 w-4" />
+              <Phone className="h-3 w-3" />
               <span>(602) 889-5271 - (602) 485-2318</span>
             </a>
             <a href="mailto:administrador@marthajmejia.com" className="flex items-center gap-2 hover:text-accent transition-colors">
