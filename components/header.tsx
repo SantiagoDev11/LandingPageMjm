@@ -57,7 +57,7 @@ export function Header() {
             : "bg-white shadow-sm"
         )}
       >
-        <nav className="container mx-auto px-6 py-4">
+        <nav className="container mx-auto px-6 py-2">
           <div className="flex items-center justify-between">
             {/* Logo modificado */}
               <Link href="/" className="flex items-center gap-10 group">
