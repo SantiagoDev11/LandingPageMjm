@@ -22,7 +22,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6 group">
               <img 
-                src="/LandingPageMjm/logo7mjm.png" 
+                src="/LandingPageMjm/logomjmgris.png" 
                 alt="Logo MJM" 
                 className="w-62 h-38 object-contain group-hover:scale-105 transition-transform"
               />
