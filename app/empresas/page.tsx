@@ -278,7 +278,7 @@ export default function EmpresasPage() {
               <div className="bg-[#8ecae6] p-4 rounded-full mb-6 shadow-md">
                 <LineChart className="w-8 h-8 text-slate-900" />
               </div>
-              <h3 className="text-slate-900 text-lg font-bold uppercase mb-1">Área Comercial</h3>
+              <h3 className="text-slate-900 text-lg font-bold uppercase mb-1">Seguimiento en tiempo real</h3>
               <h4 className="text-blue-700 text-md font-semibold mb-4 invisible md:block">&nbsp;</h4>            
               <p className="text-slate-800 text-sm font-medium leading-relaxed">Disponemos de herramientas de análisis de datos.</p>
             </div>
