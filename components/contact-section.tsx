@@ -74,7 +74,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contacto" className="py-8 bg-gradient-to-br from-[#0d2a61] via-[#164191] to-[#1264ad] text-white relative overflow-hidden">
+    <section id="contacto" className="py-8 bg-gradient-to-br from-[#0d2a61] via-[#164191] to-[#1264ad] text-white relative overflow-hidden scroll-mt-24">
       <div className="container mx-auto px-4 max-w-5xl relative">
 
         <div className="max-w-2xl mx-auto text-center mb-8">
