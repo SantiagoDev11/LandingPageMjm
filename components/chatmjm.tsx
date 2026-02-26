@@ -40,7 +40,7 @@ useEffect(() => {
       tel: '6028895271 - 6024852318',
       ext: '8'
     },
-    whatsappGeneral: '573000000000'
+    
   };
 
   const datosEntidades: any = {
@@ -153,7 +153,11 @@ useEffect(() => {
                     📞 Tel: <a href={`tel:${entidadSel.tel}`} style={linkStyle}>{entidadSel.tel}</a><br />
                     🏢 Ext: <strong>{entidadSel.ext}</strong><br />
                     ✉️ <a href={`mailto:${entidadSel.correo}`} style={linkStyle}>{entidadSel.correo}</a><br />
-                    💬 Whatsapp: <strong>{entidadSel.whatsapp}</strong>
+                    {entidadSel.whatsapp && (
+                    <>
+                    💬 Whatsapp: <strong>{entidadSel.whatsapp}</strong><br />
+                    </>
+                )}
                   </div>
                 </div>
                 <button onClick={() => setStep('obligacion')} style={backStyle}>← Cambiar entidad</button>
