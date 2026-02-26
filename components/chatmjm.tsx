@@ -14,7 +14,7 @@ const ChatMJM = () => {
     juridico: {
       correo: 'juridico5@marthajmejia.com',
       tel: '6028895271 - 6024852318',
-      ext: '3'
+      ext: '8'
     },
     whatsappGeneral: '573000000000'
   };
