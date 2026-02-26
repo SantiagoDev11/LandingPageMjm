@@ -3,16 +3,28 @@ import { useState } from 'react';
 
 const ChatMJM = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [step, setStep] = useState('inicio'); 
 
   const irAWhatsapp = (mensaje: string) => {
-    // REEMPLAZA ESTE NÚMERO POR EL TUYO REAL (Ejemplo: 573001234567)
-    const telefono = "573015707645"; 
+    // REEMPLAZA CON TU NÚMERO REAL (Incluye el 57)
+    const telefono = "573000000000"; 
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
   };
 
+  const reiniciarChat = () => {
+    setStep('inicio');
+    setIsOpen(false);
+  };
+
   return (
-    <div style={{ position: 'fixed', bottom: '25px', right: '25px', zIndex: 9999, fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ 
+      position: 'fixed', 
+      bottom: '160px', // <--- Subido más para evitar el choque con el otro botón
+      right: '25px', 
+      zIndex: 9999, 
+      fontFamily: 'Arial, sans-serif' 
+    }}>
       {/* Ventana del Chat */}
       {isOpen && (
         <div style={{ width: '310px', background: 'white', borderRadius: '15px', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', marginBottom: '15px', overflow: 'hidden', border: '1px solid #e0e0e0' }}>
@@ -22,18 +34,50 @@ const ChatMJM = () => {
           </div>
           
           <div style={{ padding: '15px', display: 'flex', flexDirection: 'column', gap: '10px', background: '#f9f9f9' }}>
-            <button onClick={() => irAWhatsapp('Hola, represento a una empresa y me gustaría conocer sus servicios.')} style={btnStyle}>1. Soy una empresa</button>
-            <button onClick={() => irAWhatsapp('Hola, tengo una obligación pendiente y quiero consultar mi estado.')} style={btnStyle}>2. Tengo una obligación pendiente</button>
-            <button onClick={() => irAWhatsapp('Hola, necesito asesoría jurídica o pre-jurídica.')} style={btnStyle}>3. Necesito asesoría pre jurídica o jurídica</button>
-            <button onClick={() => irAWhatsapp('Hola, deseo radicar una PQRS.')} style={{...btnStyle, borderLeft: '4px solid #d9534f'}}>4. PQRS</button>
+            
+            {step === 'inicio' ? (
+              <>
+                <p style={{ fontSize: '13px', color: '#666', marginBottom: '5px' }}>¿Cómo podemos ayudarte?</p>
+                <button onClick={() => irAWhatsapp('Hola, represento a una empresa y busco servicios de cobranza.')} style={btnStyle}>1. Soy una empresa</button>
+                <button onClick={() => setStep('obligacion')} style={btnStyle}>2. Tengo una obligación pendiente</button>
+                <button onClick={() => irAWhatsapp('Hola, necesito asesoría jurídica o pre-jurídica.')} style={btnStyle}>3. Necesito asesoría pre jurídica o jurídica</button>
+                <button onClick={() => irAWhatsapp('Hola, deseo radicar una PQRS.')} style={{...btnStyle, borderLeft: '4px solid #d9534f'}}>4. PQRS</button>
+              </>
+            ) : (
+              <>
+                <p style={{ fontSize: '13px', color: '#666', marginBottom: '5px' }}>Tu obligación está con:</p>
+                <button onClick={() => irAWhatsapp('Hola, mi obligación está con FNA y quiero consultar mi estado.')} style={btnStyle}>1. FNA</button>
+                <button onClick={() => irAWhatsapp('Hola, mi obligación está con COMFANDI y quiero consultar mi estado.')} style={btnStyle}>2. COMFANDI</button>
+                <button onClick={() => irAWhatsapp('Hola, mi obligación está con CRESI y quiero consultar mi estado.')} style={btnStyle}>3. CRESI</button>
+                <button onClick={() => setStep('inicio')} style={{ ...btnStyle, background: '#eee', borderLeft: '4px solid #666', marginTop: '5px', color: '#666' }}>← Volver atrás</button>
+              </>
+            )}
+
           </div>
         </div>
       )}
 
       {/* Botón Flotante */}
       <button 
-        onClick={() => setIsOpen(!isOpen)}
-        style={{ background: '#004a99', width: '60px', height: '60px', borderRadius: '50%', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.3)', transition: '0.3s' }}
+        onClick={() => {
+            if(isOpen) reiniciarChat();
+            else setIsOpen(true);
+        }}
+        style={{ 
+            background: '#004a99', 
+            width: '60px', 
+            height: '60px', 
+            border: 'none', 
+            borderRadius: '50%', 
+            cursor: 'pointer', 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+            transition: 'transform 0.2s'
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
       >
         {isOpen ? (
           <span style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>×</span>
@@ -56,7 +100,8 @@ const btnStyle = {
   fontWeight: '500' as any,
   textAlign: 'left' as any,
   fontSize: '13px',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+  transition: 'background 0.2s'
 };
 
 export default ChatMJM;
