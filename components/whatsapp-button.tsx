@@ -1,4 +1,4 @@
-/*"use client"
+"use client"
 
 import { useState, useEffect } from "react"
 import { MessageCircle, X } from "lucide-react"
@@ -48,7 +48,7 @@ export function WhatsAppButton() {
         </div>
       )}
 
-      {/* Button */}/*
+      {/* Button */}
       <a
         href={whatsappUrl}
         target="_blank"
@@ -61,7 +61,7 @@ export function WhatsAppButton() {
       >
         <MessageCircle className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
         
-        {/* Pulse animation */}/*
+        {/* Pulse animation */}
         <span className="absolute w-full h-full rounded-full bg-[#25d366] animate-ping opacity-30" />
       </a>
     </>
