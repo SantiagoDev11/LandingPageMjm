@@ -50,7 +50,7 @@ const ChatMJM = () => {
                 <p style={textStyle}>Bienvenido. ¿En qué área podemos asesorarte hoy?</p>
                 <button onClick={() => setStep('info-empresa')} style={btnStyle}>1. Soy una empresa</button>
                 <button onClick={() => setStep('obligacion')} style={btnStyle}>2. Tengo una obligación pendiente</button>
-                <button onClick={() => setStep('info-juridico')} style={btnStyle}>3. Asesoría jurídica/pre-jurídica</button>
+                <button onClick={() => setStep('info-juridico')} style={btnStyle}>3. Asesoría jurídica</button>
                 <button onClick={() => setStep('pqrs')} style={{...btnStyle, borderLeft: '4px solid #d7d94f'}}>4. PQRS</button>
               </>
             )}
@@ -75,7 +75,7 @@ const ChatMJM = () => {
               <>
                 <div style={infoBoxStyle}>
                   <strong style={titleStyle}>Asesoría Jurídica</strong>
-                  <p style={descStyle}>Especialistas en procesos ejecutivos, representación legal y conciliaciones para garantizar la seguridad jurídica de sus obligaciones.</p>
+                  <p style={descStyle}>Ofrecemos un acompañamiento integral a nuestros clientes en derecho civil y comercial.</p>
                   <div style={contactSectionStyle}>
                     📞 Tel: <a href={`tel:${contactosMJM.juridico.tel}`} style={linkStyle}>{contactosMJM.juridico.tel}</a><br />
                     🏢 Ext: <strong>{contactosMJM.juridico.ext}</strong><br />
