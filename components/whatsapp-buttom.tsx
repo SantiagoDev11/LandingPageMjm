@@ -27,7 +27,6 @@ export function WhatsAppButton() {
 
   return (
     <>
-      {/* Tooltip */}
       {showTooltip && (
         <div 
           className={cn(
@@ -48,7 +47,6 @@ export function WhatsAppButton() {
         </div>
       )}
 
-      {/* Button */}
       <a
         href={whatsappUrl}
         target="_blank"
@@ -60,8 +58,6 @@ export function WhatsAppButton() {
         aria-label="Contactar por WhatsApp"
       >
         <MessageCircle className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
-        
-  
       </a>
     </>
   )
