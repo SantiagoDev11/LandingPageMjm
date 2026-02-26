@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Montserrat, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import ChatMJM from "@/components/chatmjm";
 
 const montserrat = Montserrat({ 
   subsets: ["latin"],
@@ -51,6 +52,7 @@ export default function RootLayout({
     <html lang="es" className={`scroll-smooth ${montserrat.variable} ${lato.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <ChatMJM />
         <Analytics />
       </body>
     </html>
