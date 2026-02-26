@@ -1,38 +1,40 @@
 'use client';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const ChatMJM = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState('inicio');
   const [entidadSel, setEntidadSel] = useState<any>(null);
+  
+  // Estados para el Tooltip
+  const [showTooltip, setShowTooltip] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
-  /*Animación*/
-useEffect(() => {
-  const style = document.createElement("style");
-  style.innerHTML = `
-    @keyframes rippleEffect {
-      0% {
-        box-shadow: 0 0 0 0 rgba(0,74,153, 0.5);
+  /* Animación y Efecto de aparición del Tooltip */
+  useEffect(() => {
+    // Animación Ripple
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes rippleEffect {
+        0% { box-shadow: 0 0 0 0 rgba(0,74,153, 0.5); }
+        70% { box-shadow: 0 0 0 18px rgba(0,74,153, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0,74,153, 0); }
       }
-      70% {
-        box-shadow: 0 0 0 18px rgba(0,74,153, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(0,74,153, 0);
-      }
-    }
-  `;
-  document.head.appendChild(style);
+    `;
+    document.head.appendChild(style);
 
-  return () => {
-    document.head.removeChild(style);
-  };
-}, []);
+    // Timer para mostrar el tooltip con fade-in
+    const timer = setTimeout(() => setIsVisible(true), 300);
+
+    return () => {
+      document.head.removeChild(style);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const contactosMJM = {
     comercial: {
-      correo1: 'servicioalcliente@marthajemjia.com',
+      correo1: 'servicioalcliente@marthajmejia.com',
       tel: '6028895271 - 6024852318'
     },
     juridico: {
@@ -40,14 +42,13 @@ useEffect(() => {
       tel: '6028895271 - 6024852318',
       ext: '8'
     },
-    
   };
 
   const datosEntidades: any = {
     'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: 'No disponible' },
     'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: 'No disponible' },
     'CRESI': { tel: '6028895271 - 6024852318', ext: '2', correo: 'cresi@marthajmejia.com', whatsapp: '320 565 3978' },
-    'BANCO AV VILLAS': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com',  },    
+    'BANCO AV VILLAS': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
   };
 
   const reiniciarChat = () => {
@@ -58,18 +59,41 @@ useEffect(() => {
 
   return (
     <div style={containerStyle}>
+      
+      {/* TOOLTIP (ETIQUETA) */}
+      {showTooltip && !isOpen && (
+        <div 
+          style={{
+            ...tooltipStyle,
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateX(0)' : 'translateX(20px)',
+          }}
+        >
+          <button 
+            onClick={(e) => { e.stopPropagation(); setShowTooltip(false); }}
+            style={closeTooltipBtnStyle}
+          >
+            ×
+          </button>
+          <p style={{ margin: '0 0 4px 0', fontSize: '14px', fontWeight: '600', color: '#333' }}>
+            ¿Necesita ayuda?
+          </p>
+          <p style={{ margin: 0, fontSize: '12px', color: '#666', lineHeight: '1.4' }}>
+            Consulte nuestros canales de atención inmediata aquí.
+          </p>
+          {/* Triangulito del tooltip */}
+          <div style={tooltipArrowStyle} />
+        </div>
+      )}
+
       {isOpen && (
         <div style={chatWindowStyle}>
-          {/* HEADER FIJO */}
           <div style={headerStyle}>
             <strong style={{ display: 'block', fontSize: '15px' }}>Asistente Martha Janeth Mejia</strong>
             <span style={{ fontSize: '11px', opacity: 0.9 }}>Atención Especializada</span>
           </div>
           
-          {/* CUERPO CON SCROLL INTERNO */}
           <div style={bodyStyle}>
-            
-            {/* MENU INICIAL */}
             {step === 'inicio' && (
               <>
                 <p style={textStyle}>Bienvenido. ¿En qué área podemos asesorarte hoy?</p>
@@ -80,7 +104,6 @@ useEffect(() => {
               </>
             )}
 
-            {/* INFO EMPRESAS - UNIFICADO */}
             {step === 'info-empresa' && (
               <>
                 <div style={infoBoxStyle}>
@@ -95,7 +118,6 @@ useEffect(() => {
               </>
             )}
 
-            {/* INFO JURÍDICA - UNIFICADO */}
             {step === 'info-juridico' && (
               <>
                 <div style={infoBoxStyle}>
@@ -111,7 +133,6 @@ useEffect(() => {
               </>
             )}
 
-            {/* OBLIGACIONES - UNIFICADO */}
             {step === 'obligacion' && (
               <>
                 <div style={{ marginBottom: '10px' }}>
@@ -125,7 +146,6 @@ useEffect(() => {
               </>
             )}
 
-            {/* PQRS - TAL CUAL SOLICITADO */}
             {step === 'pqrs' && (
               <>
                 <div style={infoBoxStyle}>
@@ -143,7 +163,6 @@ useEffect(() => {
               </>
             )}
 
-            {/* INFO ENTIDAD SELECCIONADA */}
             {step === 'info-entidad' && entidadSel && (
               <>
                 <div style={infoBoxStyle}>
@@ -163,39 +182,82 @@ useEffect(() => {
                 <button onClick={() => setStep('obligacion')} style={backStyle}>← Cambiar entidad</button>
               </>
             )}
-
           </div>
         </div>
       )}
 
       {/* BURBUJA FLOTANTE */}
-        <button
-         onClick={() => (isOpen ? reiniciarChat() : setIsOpen(true))}
+      <button
+        onClick={() => (isOpen ? reiniciarChat() : setIsOpen(true))}
         style={{
-         ...bubbleStyle,
-        animation: !isOpen ? 'rippleEffect 2.5s infinite' : 'none'
-     }}
->   
+          ...bubbleStyle,
+          animation: !isOpen ? 'rippleEffect 1.5s infinite' : 'none'
+        }}
+      >   
         {isOpen ? <span style={{ color: 'white', fontSize: '24px' }}>×</span> : <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>}
       </button>
     </div>
   );
 };
 
-// --- ESTILOS MEJORADOS ---
-
+// --- ESTILOS ---
 
 const containerStyle = { 
   position: 'fixed' as const, 
   bottom: '30px', 
   right: '25px', 
   zIndex: 9999, 
-  fontFamily: '"Segoe UI", Roboto, Arial, sans-serif' 
+  fontFamily: '"Segoe UI", Roboto, Arial, sans-serif',
+  display: 'flex',
+  flexDirection: 'column' as const,
+  alignItems: 'flex-end'
 };
 
+const tooltipStyle = {
+  background: 'white',
+  padding: '15px',
+  borderRadius: '12px',
+  boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
+  width: '220px',
+  marginBottom: '15px',
+  position: 'relative' as const,
+  transition: 'all 0.4s ease',
+  border: '1px solid #eee'
+};
+
+const closeTooltipBtnStyle = {
+  position: 'absolute' as const,
+  top: '-8px',
+  right: '-8px',
+  width: '22px',
+  height: '22px',
+  background: '#f0f0f0',
+  border: 'none',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '14px',
+  color: '#666',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+};
+
+const tooltipArrowStyle = {
+  position: 'absolute' as const,
+  bottom: '-8px',
+  right: '20px',
+  width: '0',
+  height: '0',
+  borderLeft: '8px solid transparent',
+  borderRight: '8px solid transparent',
+  borderTop: '8px solid white'
+};
+
+// ... Resto de tus estilos existentes se mantienen igual ...
 const chatWindowStyle = { 
   width: '320px', 
-  height: '480px', // Altura fija
+  height: '480px', 
   background: 'white', 
   borderRadius: '16px', 
   boxShadow: '0 12px 28px rgba(0,0,0,0.22)', 
@@ -218,16 +280,14 @@ const bodyStyle = {
   padding: '15px', 
   background: '#f8f9fa', 
   flexGrow: 1, 
-  overflowY: 'auto' as const, // Scroll si el contenido excede la altura fija
+  overflowY: 'auto' as const, 
   display: 'flex', 
   flexDirection: 'column' as const, 
   gap: '12px' 
 };
 
 const titleStyle = { color: '#004a99', fontSize: '14px', display: 'block', marginBottom: '8px' };
-
 const descStyle = { fontSize: '12px', color: '#555', margin: '0 0 10px 0', lineHeight: '1.4' };
-
 const contactSectionStyle = { borderTop: '1px solid #eee', paddingTop: '10px', marginTop: '5px', fontSize: '12px' };
 
 const btnStyle = { 
