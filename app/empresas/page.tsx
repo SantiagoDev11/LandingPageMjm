@@ -174,9 +174,10 @@ export default function EmpresasPage() {
                 <h2 className="text-3xl font-bold text-slate-900 uppercase">INFRAESTRUCTURA DE INFORMÁTICA Y TELECOMUNICACIONES</h2>
               </div>
               <div className="space-y-6 text-slate-700 leading-relaxed">
-                <p>Disponemos de un Departamento de Sistemas capaz de implementar, monitorear, dar soporte y mantenimiento, así como auditoría de seguridad informática a nuestra infraestructura de plataformas tecnológicas de software y hardware, las cuales nos permiten brindar un servicio eficiente.</p>
-                <p>Todo ello siempre con la auditoría informática de nuestro departamento de Sistemas.</p>
-                <p>Nuestra infraestructura informática le garantiza un sistema de contingencia ante fallas.</p>
+                <p>Contamos con un **Departamento de Sistemas altamente calificado, encargado de la implementación, monitoreo, soporte, mantenimiento y auditoría de seguridad informática de toda nuestra infraestructura tecnológica, tanto de software como de hardware.</p>
+                <p>Gracias a una gestión integral y a procesos permanentes de auditoría informática, garantizamos el óptimo funcionamiento, la estabilidad y la protección de nuestras plataformas tecnológicas, lo que nos permite brindar un servicio eficiente, confiable y seguro.</p>
+                <p>
+Nuestra infraestructura informática está respaldada por sólidos sistemas de contingencia y planes de continuidad operativa, asegurando la disponibilidad del servicio ante cualquier eventualidad o falla técnica.</p>
                </div>
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="order-1 lg:order-2 relative h-[500px] rounded-[60px] overflow-hidden shadow-2xl">
