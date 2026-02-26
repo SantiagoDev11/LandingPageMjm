@@ -1,10 +1,34 @@
 'use client';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const ChatMJM = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState('inicio');
   const [entidadSel, setEntidadSel] = useState<any>(null);
+
+  /*Animación*/
+useEffect(() => {
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes rippleEffect {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0,74,153, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 18px rgba(0,74,153, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0,74,153, 0);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  return () => {
+    document.head.removeChild(style);
+  };
+}, []);
 
   const contactosMJM = {
     comercial: {
@@ -22,7 +46,8 @@ const ChatMJM = () => {
   const datosEntidades: any = {
     'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: 'No disponible' },
     'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: 'No disponible' },
-    'CRESI': { tel: '6028895271 - 6024852318', ext: '2', correo: 'cresi@marthajmejia.com', whatsapp: '320 565 3978' }
+    'CRESI': { tel: '6028895271 - 6024852318', ext: '2', correo: 'cresi@marthajmejia.com', whatsapp: '320 565 3978' },
+    'BANCO AV VILLAS': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com',  },    
   };
 
   const reiniciarChat = () => {
@@ -95,6 +120,7 @@ const ChatMJM = () => {
                 <button onClick={() => { setEntidadSel({nombre: 'FNA', ...datosEntidades['FNA']}); setStep('info-entidad'); }} style={btnStyle}>FNA</button>
                 <button onClick={() => { setEntidadSel({nombre: 'COMFANDI', ...datosEntidades['COMFANDI']}); setStep('info-entidad'); }} style={btnStyle}>COMFANDI</button>
                 <button onClick={() => { setEntidadSel({nombre: 'CRESI', ...datosEntidades['CRESI']}); setStep('info-entidad'); }} style={btnStyle}>CRESI</button>
+                <button onClick={() => { setEntidadSel({nombre: 'BANCO AV VILLAS', ...datosEntidades['BANCO AV VILLAS']}); setStep('info-entidad'); }} style={btnStyle}>BANCO AV VILLAS</button>                
                 <button onClick={() => setStep('inicio')} style={backStyle}>← Volver</button>
               </>
             )}
@@ -139,7 +165,13 @@ const ChatMJM = () => {
       )}
 
       {/* BURBUJA FLOTANTE */}
-      <button onClick={() => (isOpen ? reiniciarChat() : setIsOpen(true))} style={bubbleStyle}>
+        <button
+         onClick={() => (isOpen ? reiniciarChat() : setIsOpen(true))}
+        style={{
+         ...bubbleStyle,
+        animation: !isOpen ? 'rippleEffect 2.5s infinite' : 'none'
+     }}
+>   
         {isOpen ? <span style={{ color: 'white', fontSize: '24px' }}>×</span> : <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>}
       </button>
     </div>
@@ -147,6 +179,7 @@ const ChatMJM = () => {
 };
 
 // --- ESTILOS MEJORADOS ---
+
 
 const containerStyle = { 
   position: 'fixed' as const, 
