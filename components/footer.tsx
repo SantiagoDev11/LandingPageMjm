@@ -56,7 +56,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a 
-                  href="/politica-datos.pdf" 
+                  href="politica-datos.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-white/70 hover:text-blue-400 transition-colors text-sm flex items-center gap-2"
