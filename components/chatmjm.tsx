@@ -45,10 +45,16 @@ const ChatMJM = () => {
   };
 
   const datosEntidades: any = {
-    'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: 'No disponible' },
-    'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: 'No disponible' },
+    'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: '311 771 7494' },
+    'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: '322 632 2680' },
     'CRESI': { tel: '6028895271 - 6024852318', ext: '2', correo: 'cresi@marthajmejia.com', whatsapp: '320 565 3978' },
     'BANCO AV VILLAS': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'AECSA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'ECREDIT': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'REFINANCIA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'GENIX': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'PATRIMONIO AUTÓNOMO': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+
   };
 
   const reiniciarChat = () => {
@@ -133,15 +139,22 @@ const ChatMJM = () => {
               </>
             )}
 
-            {step === 'obligacion' && (
+{step === 'obligacion' && (
               <>
                 <div style={{ marginBottom: '10px' }}>
                    <p style={textStyle}>Contamos con canales dedicados para cada entidad. Selecciona la tuya para continuar:</p>
                 </div>
-                <button onClick={() => { setEntidadSel({nombre: 'FNA', ...datosEntidades['FNA']}); setStep('info-entidad'); }} style={btnStyle}>FNA</button>
+                {/* Entidades organizadas alfabéticamente */}
+                <button onClick={() => { setEntidadSel({nombre: 'AECSA', ...datosEntidades['AECSA']}); setStep('info-entidad'); }} style={btnStyle}>AECSA</button>
+                <button onClick={() => { setEntidadSel({nombre: 'BANCO AV VILLAS', ...datosEntidades['BANCO AV VILLAS']}); setStep('info-entidad'); }} style={btnStyle}>BANCO AV VILLAS</button>
                 <button onClick={() => { setEntidadSel({nombre: 'COMFANDI', ...datosEntidades['COMFANDI']}); setStep('info-entidad'); }} style={btnStyle}>COMFANDI</button>
                 <button onClick={() => { setEntidadSel({nombre: 'CRESI', ...datosEntidades['CRESI']}); setStep('info-entidad'); }} style={btnStyle}>CRESI</button>
-                <button onClick={() => { setEntidadSel({nombre: 'BANCO AV VILLAS', ...datosEntidades['BANCO AV VILLAS']}); setStep('info-entidad'); }} style={btnStyle}>BANCO AV VILLAS</button>                
+                <button onClick={() => { setEntidadSel({nombre: 'ECREDIT', ...datosEntidades['ECREDIT']}); setStep('info-entidad'); }} style={btnStyle}>ECREDIT</button>
+                <button onClick={() => { setEntidadSel({nombre: 'FNA', ...datosEntidades['FNA']}); setStep('info-entidad'); }} style={btnStyle}>FNA</button>
+                <button onClick={() => { setEntidadSel({nombre: 'GENIX', ...datosEntidades['GENIX']}); setStep('info-entidad'); }} style={btnStyle}>GENIX</button>                
+                <button onClick={() => { setEntidadSel({nombre: 'PATRIMONIO AUTÓNOMO', ...datosEntidades['PATRIMONIO AUTÓNOMO']}); setStep('info-entidad'); }} style={btnStyle}>PATRIMONIO AUTÓNOMO</button>
+                <button onClick={() => { setEntidadSel({nombre: 'REFINANCIA', ...datosEntidades['REFINANCIA']}); setStep('info-entidad'); }} style={btnStyle}>REFINANCIA</button>
+                
                 <button onClick={() => setStep('inicio')} style={backStyle}>← Volver</button>
               </>
             )}
