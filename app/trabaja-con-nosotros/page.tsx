@@ -9,11 +9,11 @@ export default function TrabajaConNosotrosPage() {
   const form = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [isSent, setIsSent] = useState(false); // Estado para el mensaje de éxito
 
-  // --- DATOS EXTRAÍDOS DE TUS CAPTURAS ---
-  const CLOUD_NAME = "dvxh04lhx";       // De tu Dashboard Cloudinary
-  const UPLOAD_PRESET = "ml_default";    // De tu configuración Upload Presets
-  
+  // TUS DATOS VALIDADOS
+  const CLOUD_NAME = "dvxh04lhx";
+  const UPLOAD_PRESET = "ml_default";
   const SERVICE_ID = "service_kiu5zfv";
   const TEMPLATE_ID = "template_jrbuk5n";
   const PUBLIC_KEY = "bbk-fn5M7gXuVYceL";
@@ -22,7 +22,7 @@ export default function TrabajaConNosotrosPage() {
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > 2097152) {
-        alert("El archivo es demasiado grande. El máximo permitido es 2MB.");
+        alert("El archivo es demasiado grande. Máximo 2MB.");
         e.target.value = ""; 
         setFileName(null);
       } else {
@@ -34,55 +34,53 @@ export default function TrabajaConNosotrosPage() {
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setIsSent(false);
 
     if (form.current) {
       try {
-        // 1. Obtener el archivo del input
         const fileInput = form.current.elements.namedItem("mi_archivo") as HTMLInputElement;
         const file = fileInput?.files?.[0];
 
         if (!file) {
-          alert("Por favor, adjunta tu CV en formato PDF.");
+          alert("Por favor adjunta tu CV.");
           setLoading(false);
           return;
         }
 
-        // 2. Subida a Cloudinary usando tu preset 'ml_default'
+        // 1. Subida a Cloudinary
         const formData = new FormData();
         formData.append("file", file);
         formData.append("upload_preset", UPLOAD_PRESET); 
 
         const cloudinaryRes = await fetch(
-          `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`, 
+          `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, 
           { method: "POST", body: formData }
         );
 
-        if (!cloudinaryRes.ok) {
-          const errorData = await cloudinaryRes.json();
-          console.error("Detalle error Cloudinary:", errorData);
-          throw new Error("Error al subir el archivo a la nube.");
-        }
+        if (!cloudinaryRes.ok) throw new Error("Error en la subida a la nube.");
         
         const fileData = await cloudinaryRes.json();
         const fileUrl = fileData.secure_url; 
 
-        // 3. Parámetros para tu plantilla 'template_jrbuk5n'
+        // 2. Parámetros para EmailJS
         const templateParams = {
-          user_name: form.current.user_name.value, // Aparecerá en el asunto
-          name: form.current.user_name.value,      // Aparecerá en el saludo
-          email: form.current.user_email.value,    // Para el Reply To
-          message: `LINK DEL CV: ${fileUrl}`        // Se enviará a hdvmarthajmejia@gmail.com
+          user_name: form.current.user_name.value,
+          name: form.current.user_name.value,
+          email: form.current.user_email.value,
+          message: `LINK DEL CV: ${fileUrl}` // Esto llega a tu correo
         };
 
-        // 4. Envío a EmailJS
+        // 3. Envío con EmailJS
         await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
 
-        alert("¡Postulación enviada con éxito!");
+        // ÉXITO: Limpiamos sin alerts molestos
         form.current.reset();
         setFileName(null);
+        setIsSent(true); 
 
       } catch (err: any) {
-        alert("Ocurrió un error: " + (err.message || "Error desconocido"));
+        console.error("Error detallado:", err);
+        alert("Hubo un problema al enviar. Intenta de nuevo.");
       } finally {
         setLoading(false);
       }
@@ -92,6 +90,7 @@ export default function TrabajaConNosotrosPage() {
   return (
     <main className="min-h-screen bg-slate-50 flex flex-col">
       <Header /> 
+      
       <div className="flex-grow pt-32 pb-20 container mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -135,20 +134,36 @@ export default function TrabajaConNosotrosPage() {
                   className="absolute inset-0 opacity-0 cursor-pointer"
                 />
                 <div className="text-blue-600 font-semibold italic">
-                  {fileName ? <span className="text-green-600">✅ {fileName}</span> : "Haz clic para subir tu PDF"}
+                  {fileName ? (
+                    <span className="text-green-600 font-bold">✅ {fileName}</span>
+                  ) : (
+                    "Haz clic para subir tu PDF"
+                  )}
                 </div>
               </div>
             </div>
+
+            {/* Mensaje de éxito en la UI */}
+            {isSent && (
+              <motion.p 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                className="text-green-600 font-bold text-center bg-green-50 py-2 rounded-xl"
+              >
+                ¡Postulación enviada correctamente!
+              </motion.p>
+            )}
 
             <button 
               disabled={loading}
               className="w-full bg-[#0d2a61] text-white py-5 rounded-full font-bold uppercase tracking-widest hover:bg-blue-900 transition-all shadow-lg disabled:opacity-50"
             >
-              {loading ? "PROCESANDO ENVÍO..." : "ENVIAR POSTULACIÓN"}
+              {loading ? "PROCESANDO..." : "ENVIAR POSTULACIÓN"}
             </button>
           </form>
         </motion.div>
       </div>
+
       <Footer />
     </main>
   );
