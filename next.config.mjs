@@ -1,12 +1,14 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
   },
-  // ESTO ES CLAVE para que carguen los estilos en GitHub Pages
-  basePath: '/LandingPageMjm',
-  assetPrefix: '/LandingPageMjm',
+  // Solo aplica el path si estamos en producción (subiendo a GitHub)
+  basePath: isProd ? '/LandingPageMjm' : '',
+  assetPrefix: isProd ? '/LandingPageMjm' : '',
 };
 
 export default nextConfig;

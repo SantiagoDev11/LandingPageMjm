@@ -12,10 +12,11 @@ export default function Home() {
       <Header />
       <HeroSection />
       <AboutSection />
-      <AdvantagesSection />      
+      <AdvantagesSection />
       <ServicesSection />
       <ContactSection />
+      
       <Footer />
     </main>
-  )
+  );
 }

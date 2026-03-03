@@ -12,8 +12,10 @@ import Image from "next/image"
   { href: "/#inicio", label: "Inicio" },
   { href: "/#conocenos", label: "Conócenos" },
   { href: "/#porque-elegirnos", label: "¿Por qué elegirnos?" }, 
-  { href: "/#servicios", label: "Servicios" },       
+  { href: "/#servicios", label: "Servicios" },  
+  { href: "/trabaja-con-nosotros", label: "Trabaja con nosotros" },     
   { href: "/empresas", label: "Empresas" },
+  
 ]
 
 
