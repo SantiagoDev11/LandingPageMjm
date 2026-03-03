@@ -1,20 +1,28 @@
 "use client";
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Header } from "@/components/header"; // Con llaves según tu image_6f4559.png
-import { Footer } from "@/components/footer"; // Con llaves según tu image_6f4559.png
+import { Header } from "@/components/header"; 
+import { Footer } from "@/components/footer"; 
 import { motion } from 'framer-motion';
 
 export default function TrabajaConNosotrosPage() {
   const form = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [isSent, setIsSent] = useState(false); // Estado para el mensaje de éxito
+
+  // TUS DATOS VALIDADOS
+  const CLOUD_NAME = "dvxh04lhx";
+  const UPLOAD_PRESET = "ml_default";
+  const SERVICE_ID = "service_kiu5zfv";
+  const TEMPLATE_ID = "template_jrbuk5n";
+  const PUBLIC_KEY = "bbk-fn5M7gXuVYceL";
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > 2097152) {
-        alert("El archivo es demasiado grande. El máximo permitido es 2MB.");
+        alert("El archivo es demasiado grande. Máximo 2MB.");
         e.target.value = ""; 
         setFileName(null);
       } else {
@@ -23,20 +31,59 @@ export default function TrabajaConNosotrosPage() {
     }
   };
 
-  const sendEmail = (e: React.FormEvent) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setIsSent(false);
 
     if (form.current) {
-      // IMPORTANTE: Asegúrate de poner tus IDs reales aquí
-      emailjs.sendForm('TU_SERVICE_ID', 'TU_TEMPLATE_ID', form.current, 'TU_PUBLIC_KEY')
-        .then(() => {
-          alert("¡Postulación enviada con éxito!");
-          form.current?.reset();
-          setFileName(null);
-        })
-        .catch((err) => alert("Error al enviar: " + err.text))
-        .finally(() => setLoading(false));
+      try {
+        const fileInput = form.current.elements.namedItem("mi_archivo") as HTMLInputElement;
+        const file = fileInput?.files?.[0];
+
+        if (!file) {
+          alert("Por favor adjunta tu CV.");
+          setLoading(false);
+          return;
+        }
+
+        // 1. Subida a Cloudinary
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", UPLOAD_PRESET); 
+
+        const cloudinaryRes = await fetch(
+          `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, 
+          { method: "POST", body: formData }
+        );
+
+        if (!cloudinaryRes.ok) throw new Error("Error en la subida a la nube.");
+        
+        const fileData = await cloudinaryRes.json();
+        const fileUrl = fileData.secure_url; 
+
+        // 2. Parámetros para EmailJS
+        const templateParams = {
+          user_name: form.current.user_name.value,
+          name: form.current.user_name.value,
+          email: form.current.user_email.value,
+          message: `LINK DEL CV: ${fileUrl}` // Esto llega a tu correo
+        };
+
+        // 3. Envío con EmailJS
+        await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+
+        // ÉXITO: Limpiamos sin alerts molestos
+        form.current.reset();
+        setFileName(null);
+        setIsSent(true); 
+
+      } catch (err: any) {
+        console.error("Error detallado:", err);
+        alert("Hubo un problema al enviar. Intenta de nuevo.");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -86,17 +133,32 @@ export default function TrabajaConNosotrosPage() {
                   onChange={handleFileChange}
                   className="absolute inset-0 opacity-0 cursor-pointer"
                 />
-                <p className="text-blue-600 font-semibold italic">
-                  {fileName ? `✅ ${fileName}` : "Haz clic o arrastra tu currículum aquí"}
-                </p>
+                <div className="text-blue-600 font-semibold italic">
+                  {fileName ? (
+                    <span className="text-green-600 font-bold">✅ {fileName}</span>
+                  ) : (
+                    "Haz clic para subir tu PDF"
+                  )}
+                </div>
               </div>
             </div>
+
+            {/* Mensaje de éxito en la UI */}
+            {isSent && (
+              <motion.p 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                className="text-green-600 font-bold text-center bg-green-50 py-2 rounded-xl"
+              >
+                ¡Postulación enviada correctamente!
+              </motion.p>
+            )}
 
             <button 
               disabled={loading}
               className="w-full bg-[#0d2a61] text-white py-5 rounded-full font-bold uppercase tracking-widest hover:bg-blue-900 transition-all shadow-lg disabled:opacity-50"
             >
-              {loading ? "Procesando..." : "Enviar Postulación"}
+              {loading ? "PROCESANDO..." : "ENVIAR POSTULACIÓN"}
             </button>
           </form>
         </motion.div>
