@@ -45,7 +45,7 @@ const ChatMJM = () => {
   };
 
   const datosEntidades: any = {
-    'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: '311 771 7494' },
+    'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: '311 771 9474' },
     'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: '322 632 2680' },
     'CRESI': { tel: '6028895271 - 6024852318', ext: '2', correo: 'cresi@marthajmejia.com', whatsapp: '320 565 3978' },
     'BANCO AV VILLAS': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
