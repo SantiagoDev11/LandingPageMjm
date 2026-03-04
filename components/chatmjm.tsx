@@ -49,10 +49,12 @@ const ChatMJM = () => {
     'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: '322 632 2680' },
     'CRESI': { tel: '6028895271 - 6024852318', ext: '2', correo: 'cresi@marthajmejia.com', whatsapp: '320 565 3978' },
     'BANCO AV VILLAS': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'BANCOOMEVA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'BANCO DE OCCIDENTE': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
     'AECSA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
     'ECREDIT': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
     'REFINANCIA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
-    'GENIX': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'GENIX': { tel: '6028895271 - 6024852318', ext: '8', correo: 'genix@marthajmejia.com' },
     'PATRIMONIO AUTÓNOMO': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
 
   };
@@ -147,6 +149,8 @@ const ChatMJM = () => {
                 {/* Entidades organizadas alfabéticamente */}
                 <button onClick={() => { setEntidadSel({nombre: 'AECSA', ...datosEntidades['AECSA']}); setStep('info-entidad'); }} style={btnStyle}>AECSA</button>
                 <button onClick={() => { setEntidadSel({nombre: 'BANCO AV VILLAS', ...datosEntidades['BANCO AV VILLAS']}); setStep('info-entidad'); }} style={btnStyle}>BANCO AV VILLAS</button>
+                <button onClick={() => { setEntidadSel({nombre: 'BANCOOMEVA', ...datosEntidades['BANCOOMEVA']}); setStep('info-entidad'); }} style={btnStyle}>BANCOOMEVA</button>
+                <button onClick={() => { setEntidadSel({nombre: 'BANCO DE OCCIDENTE', ...datosEntidades['BANCO DE OCCIDENTE']}); setStep('info-entidad'); }} style={btnStyle}>BANCO DE OCCIDENTE</button>
                 <button onClick={() => { setEntidadSel({nombre: 'COMFANDI', ...datosEntidades['COMFANDI']}); setStep('info-entidad'); }} style={btnStyle}>COMFANDI</button>
                 <button onClick={() => { setEntidadSel({nombre: 'CRESI', ...datosEntidades['CRESI']}); setStep('info-entidad'); }} style={btnStyle}>CRESI</button>
                 <button onClick={() => { setEntidadSel({nombre: 'ECREDIT', ...datosEntidades['ECREDIT']}); setStep('info-entidad'); }} style={btnStyle}>ECREDIT</button>
