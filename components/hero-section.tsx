@@ -1,25 +1,23 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Shield, Scale, Users } from "lucide-react"
+import { Shield, Scale, Users } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
-
 
 export function HeroSection() {
   return (
-    <section id="inicio" className="relative min-h-[90vh] flex items-center overflow-hidden scroll-mt-24">
-     {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="/LandingPageMjm/cobranzas.jpg" /* reemplace con imagen requerida  */
-            alt="Fondo"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-blue-950/80" />
-        </div>
+    <section id="inicio" className="relative min-h-[90vh] flex items-center overflow-hidden scroll-mt-24 bg-white">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/LandingPageMjm/cobranzas.jpg"
+          alt="Fondo"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-blue-950/80" />
+      </div>
 
-      <div className="container relative mx-auto px-6 py-20">
+      <div className="container relative mx-auto px-6 py-20 z-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white space-y-8">
@@ -35,15 +33,15 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
-             Somos especialistas en gestión de cobranza y recaudo de cartera vencida del sector financiero y comercial público o privado, mediante el cobro prejudicial y Judicial, garantizando en todo momento la aplicación de la normatividad Legal vigente que rige nuestra misión. 
+              Somos especialistas en gestión de cobranza y recaudo de cartera vencida del sector financiero y comercial público o privado, mediante el cobro prejudicial y Judicial, garantizando en todo momento la aplicación de la normatividad Legal vigente que rige nuestra misión. 
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-                 <Button 
+              <Button 
                 asChild 
                 variant="outline" 
                 size="lg" 
-                className="bg-accent hover:bg-accent/90 text-foreground font-semibold px-8 py-6 text-lg"
+                className="bg-accent hover:bg-accent/90 text-foreground font-semibold px-8 py-6 text-lg border-none"
               >
                 <Link href="#conocenos">Conocer Más</Link>
               </Button>
@@ -85,7 +83,7 @@ export function HeroSection() {
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
                 <p className="font-serif font-bold text-white text-2xl mb-2">¿Necesita recuperar su cartera?</p>
                 <p className="text-white text-sm mb-4">Contáctenos hoy mismo</p>
-                <Button asChild variant="secondary" className="bg-accent hover:bg-accent/90 text-foreground font-semibold px-8 py-6 text-lg">
+                <Button asChild variant="secondary" className="bg-accent hover:bg-accent/90 text-foreground font-semibold px-8 py-6 text-lg border-none">
                   <Link href="#contacto">Contactar</Link>
                 </Button>
               </div>
@@ -94,15 +92,15 @@ export function HeroSection() {
         </div>
       </div>
 
-    {/* Bottom Wave - Corrección Final */}
-      <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-10">
+      {/* Bottom Wave - Corrección Anti-Aliasing */}
+      <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-[0] z-30">
         <svg 
           viewBox="0 0 1440 120" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg" 
-          className="relative w-[100.5%] h-[120px] block"
+          className="relative w-[101%] h-[120px] block"
           preserveAspectRatio="none"
-          style={{ transform: 'translateX(-0.25%)' }} // Centra el ligero sobre-ancho
+          style={{ transform: 'translateX(-0.5%)' }}
         >
           <path 
             d="M0 120H1440V45C1320 45 1200 75 1080 80C960 85 840 65 720 60C600 55 480 65 360 75C240 85 120 75 0 45V120Z" 
@@ -110,7 +108,6 @@ export function HeroSection() {
           />
         </svg>
       </div>
-        </div>
     </section>
   )
 }
