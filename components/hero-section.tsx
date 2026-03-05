@@ -94,20 +94,22 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0 leading-[0]">
-      <svg 
-        viewBox="0 0 1440 120" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg" 
-        className="w-full h-auto"
-        preserveAspectRatio="none"
-      >
-      <path 
-        d="M0 120H1440V90C1380 90 1320 90 1200 85C1080 80 960 70 840 65C720 60 600 60 480 70C360 80 240 100 120 110C60 115 0 120 0 120Z" 
-       fill="white"
-      />
-          </svg>
+    {/* Bottom Wave - Corrección Final */}
+      <div className="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-10">
+        <svg 
+          viewBox="0 0 1440 120" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="relative w-[100.5%] h-[120px] block"
+          preserveAspectRatio="none"
+          style={{ transform: 'translateX(-0.25%)' }} // Centra el ligero sobre-ancho
+        >
+          <path 
+            d="M0 120H1440V45C1320 45 1200 75 1080 80C960 85 840 65 720 60C600 55 480 65 360 75C240 85 120 75 0 45V120Z" 
+            fill="white"
+          />
+        </svg>
+      </div>
         </div>
     </section>
   )
