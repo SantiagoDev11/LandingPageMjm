@@ -45,16 +45,16 @@ const ChatMJM = () => {
   };
 
   const datosEntidades: any = {
-    'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: '311 771 9474' },
-    'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: '322 632 2680' },
+    'FNA': { tel: '6028895271 - 6024852318', ext: '5', correo: 'fna@marthajmejia.com', whatsapp: '311 771 9474 - 322 596 3699' },
+    'COMFANDI': { tel: '6028895271 - 6024852318', ext: '4', correo: 'comfandi@marthajmejia.com', whatsapp: '322 632 2680 - 320 564 7854' },
     'CRESI': { tel: '6028895271 - 6024852318', ext: '2', correo: 'cresi@marthajmejia.com', whatsapp: '320 565 3978' },
     'BANCO AV VILLAS': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
     'BANCOOMEVA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
-    'BANCO DE OCCIDENTE': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
+    'BANCO DE OCCIDENTE': { tel: '6028895271 - 6024852318', ext: '8 - 8116 ', correo: 'juridico5@marthajmejia.com - juridicocomercial@marthajmejia.com' },
     'AECSA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
     'ECREDIT': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
     'REFINANCIA': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
-    'GENIX': { tel: '6028895271 - 6024852318', ext: '8', correo: 'genix@marthajmejia.com' },
+    'GENIX': { tel: '6028895271 - 6024852318', ext: '8150', correo: 'genix@marthajmejia.com' },
     'PATRIMONIO AUTÓNOMO': { tel: '6028895271 - 6024852318', ext: '8', correo: 'juridico5@marthajmejia.com' },
 
   };
