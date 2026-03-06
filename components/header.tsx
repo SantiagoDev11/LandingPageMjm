@@ -7,19 +7,21 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Image from "next/image" 
 
-
- const navLinks = [
+const navLinks = [
   { href: "/#inicio", label: "Inicio" },
   { href: "/#conocenos", label: "Conócenos" },
   { href: "/#porque-elegirnos", label: "¿Por qué elegirnos?" }, 
-  { href: "/#servicios", label: "Servicios" },  
+  { href: "/#servicios", label: "Servicios" },   
   { href: "/trabaja-con-nosotros", label: "Trabaja con nosotros" },     
   { href: "/empresas", label: "Empresas" },
-  
 ]
 
+// Definimos la interfaz para aceptar la prop showButton
+interface HeaderProps {
+  showButton?: boolean;
+}
 
-export function Header() {
+export function Header({ showButton = true }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -61,16 +63,14 @@ export function Header() {
       >
         <nav className="container mx-auto px-6 py-1">
           <div className="flex items-center justify-between">
-            {/* Logo modificado */}
-              <Link href="/" className="flex items-center gap-10 group">
-                <img 
-                  src="/LandingPageMjm/logo7mjm.png"
-                  alt="Logo MJM" 
-                  className="w-62 h-38 object-contain group-hover:scale-110 transition-transform"
-                />
-              </Link>
+            <Link href="/" className="flex items-center gap-10 group">
+              <img 
+                src="/LandingPageMjm/logo7mjm.png"
+                alt="Logo MJM" 
+                className="w-62 h-38 object-contain group-hover:scale-110 transition-transform"
+              />
+            </Link>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
                 <Link
@@ -83,14 +83,15 @@ export function Header() {
               ))}
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden lg:block">
-              <Button asChild className="bg-primary hover:bg-[#0d4a8a] text-white">
-                <Link href="#contacto">Solicitar Asesoría</Link>
-              </Button>
-            </div>
+            {/* LÓGICA DEL BOTÓN ESCRITORIO */}
+            {showButton && (
+              <div className="hidden lg:block">
+                <Button asChild className="bg-primary hover:bg-[#0d4a8a] text-white">
+                  <Link href="#contacto">Solicitar Asesoría</Link>
+                </Button>
+              </div>
+            )}
 
-            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
@@ -120,11 +121,15 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Button asChild className="w-full bg-primary hover:bg-[#0d4a8a] text-white">
-              <Link href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>
-                Solicitar Asesoría
-              </Link>
-            </Button>
+            
+            {/* LÓGICA DEL BOTÓN MÓVIL */}
+            {showButton && (
+              <Button asChild className="w-full bg-primary hover:bg-[#0d4a8a] text-white">
+                <Link href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>
+                  Solicitar Asesoría
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
       </header>
