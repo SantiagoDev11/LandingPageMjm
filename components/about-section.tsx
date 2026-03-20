@@ -53,24 +53,18 @@ export function AboutSection() {
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           
-          {/* Left - Card Visual */}
-          <div className="relative">
-            <div className="aspect-[5/3] rounded-2xl bg-gradient-to-br from-[#0d2a61] to-[#1264ad] overflow-hidden relative shadow-2xl">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <Award className="w-20 h-20 mx-auto mb-6 text-yellow-400" />
-                  <h3 className="font-serif text-3xl font-bold mb-4">
-                    Compromiso y Excelencia
-                  </h3>
-                  <p className="text-white/90 max-w-md">
-                    Resultados respaldados por una trayectoria de integridad y profesionalismo en el sector legal y financiero.
-                  </p>
-                </div>
-              </div>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-tr-full" />
-            </div>
-          </div>
+     {/* Left - Instagram Reel */}
+        <div className="relative">
+        <div className="aspect-[5/3] rounded-2xl overflow-hidden shadow-2xl">
+        <iframe
+        src=https://www.instagram.com/reel/DWHFfa8gSK2/?igsh=MXA3aDlrYmYyZWt3ZA==
+        className="w-full h-full"
+        frameBorder="0"
+        scrolling="no"
+        allowTransparency="true"
+        ></iframe>
+    </div>
+    </div>
 
           {/* Right - Text Content */}
           <div className="space-y-8">
